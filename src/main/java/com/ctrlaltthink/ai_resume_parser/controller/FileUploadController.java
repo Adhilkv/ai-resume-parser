@@ -4,8 +4,7 @@ package com.ctrlaltthink.ai_resume_parser.controller;
 import com.ctrlaltthink.ai_resume_parser.service.BackgroundProcessingService;
 import com.ctrlaltthink.ai_resume_parser.service.FileParserService;
 import com.ctrlaltthink.ai_resume_parser.service.ResumeScoringEngine;
-import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,18 +15,12 @@ import java.io.InputStream;
 
 @RestController
 @RequestMapping("/api/files")
+@RequiredArgsConstructor
 public class FileUploadController {
 
-    private FileParserService fileParserService;
-    private ResumeScoringEngine resumeScoringEngine;
+    private final FileParserService fileParserService;
+    private final ResumeScoringEngine resumeScoringEngine;
     private final BackgroundProcessingService backgroundProcessingService;
-
-    @Autowired
-    public FileUploadController(FileParserService fileParserService,ResumeScoringEngine resumeScoringEngine, BackgroundProcessingService backgroundProcessingService) {
-        this.fileParserService= fileParserService;
-        this.resumeScoringEngine= resumeScoringEngine;
-        this.backgroundProcessingService = backgroundProcessingService;
-    }
 
     @PostMapping("/parallel-parse")
     public ResponseEntity<String> parseFileAsync(@RequestParam("file") MultipartFile file,
