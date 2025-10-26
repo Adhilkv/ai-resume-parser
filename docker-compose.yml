@@ -1,0 +1,17 @@
+services:
+  postgres:
+    container_name: ai_resume_parser_postgres
+    image: postgres:17.5
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      PGDATA: data/postgres
+      POSTGRES_DB: spring_ai_resume_app
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres:/data/postgres
+    restart: unless-stopped
+
+volumes:
+  postgres:
