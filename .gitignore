@@ -62,3 +62,4 @@ pom.xml.next
 bin/
 
 .env
+.class
