@@ -4,6 +4,7 @@ package com.ctrlaltthink.ai_resume_parser.controller;
 import com.ctrlaltthink.ai_resume_parser.service.BackgroundProcessingService;
 import com.ctrlaltthink.ai_resume_parser.service.FileParserService;
 import com.ctrlaltthink.ai_resume_parser.service.ResumeScoringEngine;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,7 @@ import java.io.InputStream;
 @RestController
 @RequestMapping("/api/files")
 @RequiredArgsConstructor
+@Tag(name = "Resume Parser And Scorer",description = "Parse and Score Resumes Against Job Descriptions")
 public class FileUploadController {
 
     private final FileParserService fileParserService;
