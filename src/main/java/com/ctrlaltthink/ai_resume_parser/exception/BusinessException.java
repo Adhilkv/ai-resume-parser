@@ -1,7 +1,10 @@
 package com.ctrlaltthink.ai_resume_parser.exception;
 
 import com.ctrlaltthink.ai_resume_parser.dto.ErrorCode;
+import lombok.Getter;
 
+
+@Getter
 public class BusinessException extends RuntimeException{
 
     private final ErrorCode errorCode;

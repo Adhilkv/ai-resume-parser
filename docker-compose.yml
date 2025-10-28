@@ -1,17 +1,18 @@
 services:
   postgres:
     container_name: ai_resume_parser_postgres
-    image: postgres:17.5
+    image: postgres:16
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
-      PGDATA: data/postgres
-      POSTGRES_DB: spring_ai_resume_app
+      POSTGRES_DB: spring_ai_resume
+      PGDATA: /var/lib/postgresql/data/pgdata2
+      TZ: Asia/Kolkata
     ports:
       - "5432:5432"
     volumes:
-      - postgres:/data/postgres
+      - postgres-data:/var/lib/postgresql/data
     restart: unless-stopped
 
 volumes:
-  postgres:
+  postgres-data:

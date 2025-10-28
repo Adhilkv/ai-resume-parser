@@ -3,6 +3,8 @@ package com.ctrlaltthink.ai_resume_parser.dto;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
+import static org.springframework.http.HttpStatus.*;
+
 @Getter
 public enum ErrorCode {
 
@@ -13,6 +15,11 @@ public enum ErrorCode {
     ACCOUNT_ALREADY_ACTIVE("ACCOUNT_ALREADY_ACTIVE","Account Already Active", HttpStatus.BAD_REQUEST),
     EMAIL_ALREADY_EXISTS("EMAIL_ALREADY_EXISTS","Email Already Exists", HttpStatus.BAD_REQUEST),
     PASSWORD_MISMATCH("PASSWORD_MISMATCH", "Password Mismatch", HttpStatus.BAD_REQUEST),
+    ERR_USER_DISABLED("ERR_USER_DISABLED", "User account is disabled, please activate your account or contact the administrator", UNAUTHORIZED),
+    BAD_CREDENTIALS("BAD_CREDENTIALS", "Username and / or password is incorrect", UNAUTHORIZED),
+    INTERNAL_EXCEPTION("INTERNAL_EXCEPTION", "An internal exception occurred, please try again or contact the admin", HttpStatus.INTERNAL_SERVER_ERROR),
+    USERNAME_NOT_FOUND("USERNAME_NOT_FOUND", "Cannot find user with the provided username", NOT_FOUND),
+    CATEGORY_ALREADY_EXISTS_FOR_USER("CATEGORY_ALREADY_EXISTS_FOR_USER", "Category already exists for this user", CONFLICT),
     ;
     private final String code;
     private final String defaultMessage;
