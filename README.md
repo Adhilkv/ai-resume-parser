@@ -8,6 +8,7 @@
 - Support for parsing personal details, education, work experience, and skills.
 - Modular and extendable design for future improvements.
 - Easy integration with other Java applications.
+- Swagger : http://localhost:8080/swagger-ui/index.html#/
 
 ## Technologies Used
 
